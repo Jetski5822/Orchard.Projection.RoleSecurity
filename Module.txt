@@ -1,0 +1,8 @@
+Name: Projection Role Security
+AntiForgery: enabled
+Author: Nicholas Mayne
+Website: http://www.orchardproject.net
+Version: 1.0
+OrchardVersion: 1.7
+Description: Welds a part the content item at publish that then add the allowed roles that can view that content item.
+Category: Security
