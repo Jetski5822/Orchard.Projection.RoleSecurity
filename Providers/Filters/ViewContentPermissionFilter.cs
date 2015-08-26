@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Orchard;
 using Orchard.ContentManagement;
 using Orchard.Data;
 using Orchard.Localization;

@@ -11,7 +11,7 @@ namespace Orchard.Projection.RoleSecurity {
                     .Column<int>("Permission_id")
                 );
 
-            SchemaBuilder.CreateTable("RolesSecuritysRecord",
+            SchemaBuilder.CreateTable("RolesSecuritiesRecord",
                 table => table
                     .Column<int>("Id", column => column.PrimaryKey().Identity())
                     .Column<int>("Role_id")

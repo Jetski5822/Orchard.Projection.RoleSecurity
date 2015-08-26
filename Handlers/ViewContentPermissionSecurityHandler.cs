@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Orchard.Projection.RoleSecurity.Models;
-using JetBrains.Annotations;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Handlers;
 using Orchard.Data;
@@ -10,7 +9,6 @@ using Orchard.Security;
 using Orchard.Security.Permissions;
 
 namespace Orchard.Projection.RoleSecurity.Handlers {
-    [UsedImplicitly]
     public class ViewContentPermissionSecurityHandler : ContentHandler {
         private readonly IRepository<RoleSecurityRecord> _roleSecurityRepository;
         private readonly IRepository<PermissionRecord> _permissionRepository;
@@ -55,18 +53,27 @@ namespace Orchard.Projection.RoleSecurity.Handlers {
             }
 
             /* Delete and maintain a fresh one on each publish */
-            var currentRecord = _roleSecurityRepository.Get(o => o.ContentItemRecord == contentItem.Record);
+            var currentRecord = _roleSecurityRepository
+                .Get(o => o.ContentItemRecord == contentItem.Record);
 
             if (currentRecord != null)
                 _roleSecurityRepository.Delete(currentRecord);
 
-            PermissionRecord permissionRecord = _permissionRepository.Get(x => x.Name == _permission.Name);
+            PermissionRecord permissionRecord = _permissionRepository
+                .Get(x => x.Name == _permission.Name);
 
-            var entity = new RoleSecurityRecord{ContentItemRecord = contentItem.Record, AnonymousCanView = canAnonView, Permission = permissionRecord};
+            var entity = new RoleSecurityRecord{
+                ContentItemRecord = contentItem.Record,
+                AnonymousCanView = canAnonView,
+                Permission = permissionRecord};
+
             _roleSecurityRepository.Create(entity);
 
             foreach (var allowedRole in allowedRoles) {
-                entity.RolesSecuritys.Add(new RolesSecuritysRecord{ Role = allowedRole, RoleSecurity = entity });
+                entity.RolesSecurities.Add(
+                    new RolesSecuritiesRecord{
+                        Role = allowedRole,
+                        RoleSecurity = entity });
             }
         }
     }

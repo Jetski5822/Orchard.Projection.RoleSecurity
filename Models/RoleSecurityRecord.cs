@@ -6,7 +6,7 @@ using Orchard.Roles.Models;
 namespace Orchard.Projection.RoleSecurity.Models {
     public class RoleSecurityRecord {
         public RoleSecurityRecord() {
-            RolesSecuritys = new List<RolesSecuritysRecord>();
+            RolesSecurities = new List<RolesSecuritiesRecord>();
         }
 
         public virtual int Id { get; set; }
@@ -15,6 +15,6 @@ namespace Orchard.Projection.RoleSecurity.Models {
         public virtual PermissionRecord Permission { get; set; }
 
         [CascadeAllDeleteOrphan]
-        public virtual IList<RolesSecuritysRecord> RolesSecuritys { get; set; }
+        public virtual IList<RolesSecuritiesRecord> RolesSecurities { get; set; }
     }
 }
